@@ -72,14 +72,14 @@ public class FastScrollRecyclerView extends RecyclerView {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public boolean dispatchTouchEvent(MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 if (isCoordinateOutsideRange(x, y))
-                    return super.onTouchEvent(event);
+                    return super.dispatchTouchEvent(event);
                 else {
                     mFsCurrentSection = getFsSections()[getCurrentPosition(y - this.getPaddingTop() - getPaddingBottom() - getFsStartingY())]
                             .toUpperCase();
@@ -91,7 +91,7 @@ public class FastScrollRecyclerView extends RecyclerView {
             }
             case MotionEvent.ACTION_MOVE: {
                 if (!mFsShouldBeShown && isCoordinateOutsideRange(x, y))
-                    return super.onTouchEvent(event);
+                    return super.dispatchTouchEvent(event);
                 else {
                     mFsCurrentSection = getFsSections()[getCurrentPosition(y - getFsStartingY())]
                             .toUpperCase();
@@ -105,7 +105,7 @@ public class FastScrollRecyclerView extends RecyclerView {
                 new Handler().postDelayed(new NotifierRunnable(this), 100);
 
 
-                return !isCoordinateOutsideRange(x, y) || super.onTouchEvent(event);
+                return !isCoordinateOutsideRange(x, y) || super.dispatchTouchEvent(event);
             }
         }
 
