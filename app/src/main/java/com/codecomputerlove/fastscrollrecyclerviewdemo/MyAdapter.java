@@ -6,13 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.codecomputerlove.fastscrollrecyclerviewdemo.interfaces.FastScrollRecyclerViewSupport;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
  * Created by flaviusmester on 23/02/15.
  */
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements FastScrollRecyclerViewInterface{
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> implements FastScrollRecyclerViewSupport {
     private ArrayList<String> mDataset;
     private HashMap<String, Integer> mMapIndex;
 
